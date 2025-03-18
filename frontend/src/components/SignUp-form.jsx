@@ -25,7 +25,7 @@ export function SignUpForm({ className, ...props }) {
     setLoading(true); // Start loading
     try {
       await emailSignup(formData.email, formData.password);
-      toast.success("Signup successful!");
+      toast.success("Signup successful");
       navigate("/");
     } catch (error) {
       toast.error("Signup failed!");
@@ -38,7 +38,7 @@ export function SignUpForm({ className, ...props }) {
     setLoading(true); // Start loading
     try {
       await googleSignIn();
-      toast.success("Login successful!");
+      toast.success("Login successful");
       navigate("/");
     } catch (error) {
       console.error(error);

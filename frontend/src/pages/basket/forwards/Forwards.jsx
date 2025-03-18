@@ -43,11 +43,12 @@ import {
   useRemoveSelectedPlayerMutation,
 } from "@/redux/features/user-selection/userSelectionApi";
 import Loading from "@/components/Loading";
-import PositionBottom from "../PositionBottom";
+
 
 import { useAuth } from "@/context/AuthContext";
 import { Link } from "react-router-dom";
 import { getSocket } from "@/utils/socket";
+import OfferAd from "@/components/OfferAd";
 
 // const positions = [
 //   'LW', 'ST', 'RW', // Forwards
@@ -515,7 +516,7 @@ const Forwards = () => {
           </div>
         </div>
       </section>
-      <PositionBottom />
+      <OfferAd/>
     </>
   );
 };

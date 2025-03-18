@@ -17,7 +17,7 @@ export const fetchDefenderPlayers = async (req, res) => {
         // Base query with dynamic conditions
         let query = `
             SELECT p.player_id, p.player_face_url, p.short_name, p.nationality_name, 
-                   p.overall, p.age, p.club_position, w.bought
+                   p.overall, p.age, p.club_position, w.bought, w.value_eur
             FROM players p
             LEFT JOIN wages w ON p.wage_id = w.wage_id
             WHERE p.club_position IN ('RB','CB','LB')
@@ -79,7 +79,7 @@ export const fetchMidfieldersPlayers = async (req, res) => {
         // Base query with dynamic conditions
         let query = `
             SELECT p.player_id, p.player_face_url, p.short_name, p.nationality_name, 
-                   p.overall, p.age, p.club_position, w.bought
+                   p.overall, p.age, p.club_position, w.bought,w.value_eur
             FROM players p
             LEFT JOIN wages w ON p.wage_id = w.wage_id
             WHERE p.club_position IN ('CDM','CAM','CM')
@@ -141,7 +141,7 @@ export const fetchForwardsPlayers = async (req, res) => {
         // Base query with dynamic conditions
         let query = `
             SELECT p.player_id, p.player_face_url, p.short_name, p.nationality_name, 
-                   p.overall, p.age, p.club_position, w.bought
+                   p.overall, p.age, p.club_position, w.bought, w.value_eur
             FROM players p
             LEFT JOIN wages w ON p.wage_id = w.wage_id
             WHERE p.club_position IN ('LW','ST','RW')
@@ -203,7 +203,7 @@ export const fetchGoalKeeperPlayers = async (req, res) => {
         // Base query with dynamic conditions
         let query = `
             SELECT p.player_id, p.player_face_url, p.short_name, p.nationality_name, 
-                   p.overall, p.age, p.club_position, w.bought
+                   p.overall, p.age, p.club_position, w.bought,w.value_eur
             FROM players p
             LEFT JOIN wages w ON p.wage_id = w.wage_id
             WHERE p.club_position = 'GK'
@@ -291,7 +291,7 @@ export const fetchAllPlayers = async (req, res) => {
         const limit = 10;
         const offset = (page - 1) * limit;
 
-        const { player, country, age } = req.query;
+        const { player, country, age,position } = req.query;
 
         // Base query
         let query = `
@@ -304,6 +304,7 @@ export const fetchAllPlayers = async (req, res) => {
         p.overall,
         p.age,
         w.bought,
+        w.value_eur,
         ps.skill_moves,
         ps.pace,
         ps.shooting,
@@ -335,6 +336,10 @@ export const fetchAllPlayers = async (req, res) => {
         if (age) {
             conditions.push(`age >= $${values.length + 1}`);
             values.push(parseInt(age));
+        }
+        if (position) {
+            conditions.push(`club_position LIKE $${values.length + 1}`);
+            values.push(`%${position}%`);
         }
 
         // Append WHERE clause if any filters exist

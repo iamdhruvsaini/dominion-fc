@@ -92,7 +92,7 @@ const AllPlayers = () => {
 
   return (
     <>
-      <section className="bg-gray-50 xl:w-[1300px] mx-auto p-8 mt-10 rounded-lg">
+      <section className="bg-gray-50 xl:w-[1300px] mx-auto p-4 mt-10 rounded-lg">
         <div className="mx-auto shadow-lg">
           <div className="bg-white relative shadow-md sm:rounded-lg overflow-hidden p-4">
             <h1 className="scroll-m-20 text-2xl font-semibold tracking-tight p-2 text-gray-700">

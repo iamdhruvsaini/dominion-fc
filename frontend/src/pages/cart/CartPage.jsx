@@ -15,6 +15,14 @@ const positionMap = {
   goalkeepers: ["GK"],
 };
 
+// Requirements for each position
+const positionRequirements = {
+  forwards: 3,
+  midfielders: 3,
+  defenders: 4,
+  goalkeepers: 1,
+};
+
 const CartPage = () => {
   const { currentUser } = useAuth();
   const navigate = useNavigate();
@@ -65,26 +73,38 @@ const CartPage = () => {
     return <Loading />;
   }
 
-  const handlePredictionClick = (positionsSummary) => {
-   if(!positionsSummary.forwards){
-    toast.error("Select atleast 3 Forwards");
-    return;
-   }
-   else if(!positionsSummary.midfielders){
-    toast.error("Select atleast 3 midfielders");
-    return;
-   }
-   else if(!positionsSummary.defenders){
-    toast.error("Select atleast 3 defenders");
-    return;
-   }
-   else if(!positionsSummary.goalkeepers){
-    toast.error("Select atleast 1 goalkeepers");
-    return;
-   }
+  // Check if a position meets its requirement
+  const isRequirementMet = (position, count) => {
+    return count >= positionRequirements[position];
+  };
 
-    navigate('/playing');
-    
+  const handlePredictionClick = (positionsSummary) => {
+    // Check if forwards requirement is met (at least 3)
+    if (!positionsSummary.forwards || positionsSummary.forwards < 3) {
+      toast.error("Select at least 3 forwards");
+      return;
+    }
+
+    // Check if midfielders requirement is met (at least 3)
+    if (!positionsSummary.midfielders || positionsSummary.midfielders < 3) {
+      toast.error("Select at least 3 midfielders");
+      return;
+    }
+
+    // Check if defenders requirement is met (at least 4)
+    if (!positionsSummary.defenders || positionsSummary.defenders < 4) {
+      toast.error("Select at least 4 defenders");
+      return;
+    }
+
+    // Check if goalkeepers requirement is met (at least 1)
+    if (!positionsSummary.goalkeepers || positionsSummary.goalkeepers < 1) {
+      toast.error("Select at least 1 goalkeeper");
+      return;
+    }
+
+    // If all requirements are met, navigate to the playing page
+    navigate("/playing");
   };
 
   return (
@@ -99,7 +119,7 @@ const CartPage = () => {
             {/* selected player */}
             <SelectedPlayer players={players} />
             {/* Recommended section */}
-            <Trending/>
+            <Trending />
           </div>
           {/* Player summary */}
           <div className="mx-auto mt-6 max-w-4xl flex-1 space-y-6 lg:mt-0 lg:w-full">
@@ -124,11 +144,32 @@ const CartPage = () => {
                         className="flex items-center justify-between gap-4"
                         key={category}
                       >
-                        <dt className="text-base font-normal text-gray-500 capitalize">
+                        <dt className="flex items-center gap-2 text-base font-normal text-gray-500 capitalize">
                           {category}
+                          {isRequirementMet(category, count) && (
+                            <svg
+                              className="h-5 w-5 text-green-500"
+                              fill="none"
+                              stroke="currentColor"
+                              viewBox="0 0 24 24"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth="2"
+                                d="M5 13l4 4L19 7"
+                              />
+                            </svg>
+                          )}
                         </dt>
-                        <dd className="text-base font-medium text-gray-900 dark:text-white">
-                          {count}
+                        <dd className="flex items-center gap-1">
+                          <span className="text-base font-medium text-gray-900 dark:text-white">
+                            {count}
+                          </span>
+                          <span className="text-sm text-gray-500">
+                            / {positionRequirements[category]}+
+                          </span>
                         </dd>
                       </dl>
                     )
@@ -152,7 +193,9 @@ const CartPage = () => {
                     : "bg-blue-600"
                 }`}
                 disabled={cartSummary.totalPlayer === 0}
-                onClick={()=>handlePredictionClick(cartSummary.positionCounts)}
+                onClick={() =>
+                  handlePredictionClick(cartSummary.positionCounts)
+                }
               >
                 Proceed to Prediction
               </button>
