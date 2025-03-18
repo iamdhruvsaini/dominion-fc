@@ -10,7 +10,7 @@ import playerPositionRouter from './routes/player-positon/playerPosition.route.j
 import userSelectionRouter from './routes/user-selection/selection.route.js';
 import usersRouter from './routes/users/users.route.js';
 import adminPortalRouter from './routes/admin/admin.route.js';
-import { markPlayerAsSold } from './controllers/admin/home/admin.home.controller.js';
+import { markPlayerAsSoldHandler } from './controllers/admin/home/admin.home.controller.js';
 import predictionRoutes from "./routes/prediction/predictPlaying11.js";
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -60,10 +60,10 @@ app.get('/api/health', (req, res) => {
 if (process.env.NODE_ENV === 'production') {
   // Path to frontend build
   const distPath = path.join(projectRoot, 'frontend', 'dist');
-  
+
   // Serve static files
   app.use(express.static(distPath));
-  
+
   // For any route that doesn't match an API route, send the index.html
   app.get('*', (req, res) => {
     res.sendFile(path.join(distPath, 'index.html'));
@@ -115,8 +115,8 @@ io.on("connection", (socket) => {
     try {
       const { playerId, sold, wage } = data;
       console.log("Updating player status:", { playerId, sold, wage });
-      
-      const result = await markPlayerAsSold(playerId, sold, wage);
+
+      const result = await markPlayerAsSoldHandler(playerId, sold, wage);
       console.log("Player sold status updated:", result);
 
       // Broadcast the update to all connected clients
