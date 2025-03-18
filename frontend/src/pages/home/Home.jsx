@@ -11,7 +11,7 @@ import { useNavigate } from "react-router-dom";
 
 
 const Home = () => {
-  const navigate=useNavigate();
+  const navigate = useNavigate();
   return (
     <>
       <div
@@ -20,7 +20,7 @@ const Home = () => {
       >
         <div className="xl:w-[1200px] xl:mx-auto px-4 pt-4">
           <div className="py-10">
-            <button className="flex items-center bg-yellow-50 border border-yellow-400 w-fit px-4 py-1 rounded-lg sm:mx-auto group shadow-md hover:-translate-y-2 cursor-pointer duration-500" onClick={()=>navigate('/cart')}>
+            <button className="flex items-center bg-yellow-50 border border-yellow-400 w-fit px-4 py-1 rounded-lg sm:mx-auto group shadow-md hover:-translate-y-2 cursor-pointer duration-500" onClick={() => navigate('/cart')}>
               <div className="h-2 w-2 mr-2 rounded-full bg-yellow-300 border border-yellow-600  "></div>
               <span className="text-yellow-600 font-medium">v0.1: </span>
               <span className="text-yellow-700 font-medium mr-2 pl-2">
@@ -47,19 +47,18 @@ const Home = () => {
               </div>
             </div>
             <h1 className="py-8 text-5xl text-gray-700 font-display font-semibold sm:text-center md:text-5xl lg:text-7xl lg:w-5/6 sm:mx-auto">
-              Optimize Your Team with Precision ML
+              Optimize Your Team with Precision Model
             </h1>
             <p className="text-md text-justify sm:text-center md:text-xl lg:w-4/6 lg:mx-auto font-normal text-gray-500">
-              Use our web app and codebase to curate best playing team accross
-              stadiums using our Machine Learning Model
+              Harness the power of data to build the ultimate team with our advanced linear programming model
             </p>
 
             <div className="sm:flex gap-12 pt-10 sm:justify-center justify-start">
               <div className="mb-3 sm:mb-0">
-                <Button onClick={()=>navigate('/basket')}>Choose Players</Button>
+                <Button onClick={() => navigate('/basket')}>Choose Players</Button>
               </div>
               <div>
-                <Button variant={"outline"} onClick={()=>navigate('/players')} >Player Stats</Button>
+                <Button variant={"outline"} onClick={() => navigate('/players')} >Player Stats</Button>
               </div>
             </div>
           </div>
