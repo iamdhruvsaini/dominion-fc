@@ -1,102 +1,46 @@
-import { sql } from "../../../neon/connection.js";
+import {
+    getBestForwards,
+    getBestMidfielders,
+    getBestDefenders,
+    getBestGoalkeepers,
+} from "../../../services/stats/position-ranking-service.js";
 
-// forwrds[3]='LW','ST','RW'
-// Midfielders[3]='CDM','CAM','CM'
-// Defenders[3]='RB','CB','LB'
-// goalkeeper[3]='GK'
-
-export const getBestForwards = async (req, res) => {
+// Fetch best forwards
+export const getBestForwardsHandler = async (req, res) => {
     try {
-        const players = await sql`
-        SELECT 
-            p.player_id,
-            p.player_face_url, 
-            p.short_name, 
-            w.bought, 
-            p.overall, 
-            p.age, 
-            p.nationality_name
-        FROM players p
-        JOIN wages w ON p.wage_id = w.wage_id
-        WHERE p.club_position IN ('LW','ST','RW')
-        ORDER BY p.overall DESC
-        LIMIT 10;
-        `;
-
+        const players = await getBestForwards();
         res.status(200).json({ success: true, data: players });
     } catch (error) {
-        res.status(500).json({ error: "Failed to fetch best forwards" });
+        res.status(500).json({ success: false, message: "Failed to fetch best forwards", error: error.message });
     }
 };
 
-export const getBestMidfielders = async (req, res) => {
+// Fetch best midfielders
+export const getBestMidfieldersHandler = async (req, res) => {
     try {
-        const players = await sql`
-        SELECT 
-            p.player_id,
-            p.player_face_url, 
-            p.short_name, 
-            w.bought, 
-            p.overall, 
-            p.age, 
-            p.nationality_name
-        FROM players p
-        JOIN wages w ON p.wage_id = w.wage_id
-        WHERE p.club_position IN ('CDM','CAM','CM')
-        ORDER BY p.overall DESC
-        LIMIT 10;
-        `;
-
+        const players = await getBestMidfielders();
         res.status(200).json({ success: true, data: players });
     } catch (error) {
-        res.status(500).json({ error: "Failed to fetch best midfielders" });
+        res.status(500).json({ success: false, message: "Failed to fetch best midfielders", error: error.message });
     }
 };
 
-export const getBestDefenders = async (req, res) => {
+// Fetch best defenders
+export const getBestDefendersHandler = async (req, res) => {
     try {
-        const players = await sql`
-        SELECT 
-            p.player_id,
-            p.player_face_url, 
-            p.short_name, 
-            w.bought, 
-            p.overall, 
-            p.age, 
-            p.nationality_name
-        FROM players p
-        JOIN wages w ON p.wage_id = w.wage_id
-        WHERE p.club_position IN ('RB','CB','LB')
-        ORDER BY p.overall DESC
-        LIMIT 10;
-        `;
-
+        const players = await getBestDefenders();
         res.status(200).json({ success: true, data: players });
     } catch (error) {
-        res.status(500).json({ error: "Failed to fetch best defenders" });
+        res.status(500).json({ success: false, message: "Failed to fetch best defenders", error: error.message });
     }
 };
 
-export const getBestGoalkeepers = async (req, res) => {
+// Fetch best goalkeepers
+export const getBestGoalkeepersHandler = async (req, res) => {
     try {
-        const players = await sql`
-        SELECT 
-            p.player_id,
-            p.player_face_url, 
-            p.short_name, 
-            w.bought, 
-            p.overall, 
-            p.age, 
-            p.nationality_name
-        FROM players p
-        JOIN wages w ON p.wage_id = w.wage_id
-        WHERE p.club_position = 'GK'
-        ORDER BY p.overall DESC
-        LIMIT 10;
-        `;
-
+        const players = await getBestGoalkeepers();
         res.status(200).json({ success: true, data: players });
     } catch (error) {
-        res.status(500).json({ error: "Failed to fetch best goalkeepers" });
+        res.status(500).json({ success: false, message: "Failed to fetch best goalkeepers", error: error.message });
     }
 };

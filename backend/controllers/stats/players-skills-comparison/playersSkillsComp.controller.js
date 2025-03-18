@@ -1,126 +1,57 @@
-import { sql } from "../../../neon/connection.js";
+import {
+    getPlayersWithHighestSkillMoves,
+    getBestAttackingPlayers,
+    getBestDefensivePlayers,
+    getBestAllRoundPlayers,
+    getPlayersWithBestFitnessLevel,
+} from "../../../services/stats/players-skill-comparison-service.js";
 
-
-export const getPlayersWithHighestSkillMoves = async (req, res) => {
+// Fetch players with the highest skill moves
+export const getPlayersWithHighestSkillMovesHandler = async (req, res) => {
     try {
-        const players = await sql`
-        SELECT 
-            p.player_id,
-            p.player_face_url, 
-            p.short_name, 
-            w.bought, 
-            ps.skill_moves, 
-            p.overall, 
-            p.age
-        FROM players p
-        JOIN wages w ON p.wage_id = w.wage_id
-        JOIN player_skills ps ON p.player_id = ps.player_id
-        ORDER BY ps.skill_moves DESC, p.overall DESC
-        LIMIT 10;
-        `;
-
+        const players = await getPlayersWithHighestSkillMoves();
         res.status(200).json({ success: true, data: players });
     } catch (error) {
-        res.status(500).json({ error: "Failed to fetch players with highest skill moves" });
+        res.status(500).json({ success: false, message: "Failed to fetch players with highest skill moves", error: error.message });
     }
 };
 
-export const getBestAttackingPlayers = async (req, res) => {
+// Fetch best attacking players
+export const getBestAttackingPlayersHandler = async (req, res) => {
     try {
-        const players = await sql`
-        SELECT 
-            p.player_id,
-            p.player_face_url, 
-            p.short_name, 
-            w.bought, 
-            ps.attacking_skills, 
-            p.overall, 
-            p.age
-        FROM players p
-        JOIN wages w ON p.wage_id = w.wage_id
-        JOIN player_skills ps ON p.player_id = ps.player_id
-        ORDER BY ps.attacking_skills DESC, p.overall DESC
-        LIMIT 10;
-        `;
-
+        const players = await getBestAttackingPlayers();
         res.status(200).json({ success: true, data: players });
     } catch (error) {
-        res.status(500).json({ error: "Failed to fetch best attacking players" });
+        res.status(500).json({ success: false, message: "Failed to fetch best attacking players", error: error.message });
     }
 };
 
-export const getBestDefensivePlayers = async (req, res) => {
+// Fetch best defensive players
+export const getBestDefensivePlayersHandler = async (req, res) => {
     try {
-        const players = await sql`
-        SELECT 
-            p.player_id,
-            p.player_face_url, 
-            p.short_name, 
-            w.bought, 
-            ps.defending_skills, 
-            p.overall, 
-            p.age
-        FROM players p
-        JOIN wages w ON p.wage_id = w.wage_id
-        JOIN player_skills ps ON p.player_id = ps.player_id
-        ORDER BY ps.defending_skills DESC, p.overall DESC
-        LIMIT 10;
-        `;
-
+        const players = await getBestDefensivePlayers();
         res.status(200).json({ success: true, data: players });
     } catch (error) {
-        res.status(500).json({ error: "Failed to fetch best defensive players" });
+        res.status(500).json({ success: false, message: "Failed to fetch best defensive players", error: error.message });
     }
 };
 
-export const getBestAllRoundPlayers = async (req, res) => {
+// Fetch best all-round players
+export const getBestAllRoundPlayersHandler = async (req, res) => {
     try {
-        const players = await sql`
-        SELECT 
-            p.player_id,
-            p.player_face_url, 
-            p.short_name, 
-            w.bought, 
-            (ps.attacking_skills + ps.defending_skills + ps.skill_attributes + ps.movement_skills + ps.power_attributes + ps.mental_attributes) / 6 AS all_round_score,
-            p.overall, 
-            p.age
-        FROM players p
-        JOIN wages w ON p.wage_id = w.wage_id
-        JOIN player_skills ps ON p.player_id = ps.player_id
-        ORDER BY all_round_score DESC, p.overall DESC
-        LIMIT 10;
-        `;
-
+        const players = await getBestAllRoundPlayers();
         res.status(200).json({ success: true, data: players });
     } catch (error) {
-        res.status(500).json({ error: "Failed to fetch best all-round players" });
+        res.status(500).json({ success: false, message: "Failed to fetch best all-round players", error: error.message });
     }
 };
 
-export const getPlayersWithBestFitnessLevel = async (req, res) => {
+// Fetch players with the best fitness level
+export const getPlayersWithBestFitnessLevelHandler = async (req, res) => {
     try {
-        const players = await sql`
-        SELECT 
-            p.player_id,
-            p.player_face_url, 
-            p.short_name, 
-            w.bought, 
-            ph.bmi, 
-            ps.physic, 
-            p.overall, 
-            p.age
-        FROM players p
-        JOIN wages w ON p.wage_id = w.wage_id
-        JOIN physical ph ON p.player_id = ph.player_id
-        JOIN player_skills ps ON p.player_id = ps.player_id
-        ORDER BY ps.physic DESC, ph.bmi ASC, p.overall DESC
-        LIMIT 10;
-        `;
-
+        const players = await getPlayersWithBestFitnessLevel();
         res.status(200).json({ success: true, data: players });
     } catch (error) {
-        res.status(500).json({ error: "Failed to fetch players with best fitness level" });
+        res.status(500).json({ success: false, message: "Failed to fetch players with best fitness level", error: error.message });
     }
 };
-
-
