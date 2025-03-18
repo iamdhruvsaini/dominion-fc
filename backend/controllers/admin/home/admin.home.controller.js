@@ -83,6 +83,26 @@ export const markPlayerAsSoldHandler = async (req, res) => {
     }
 };
 
+// export const markPlayerAsSoldHandler = async (playerId, bought, wage) => {
+//     // Get the wage_id for the given player
+//     const [player] = await sql`
+//       SELECT wage_id FROM players WHERE player_id = ${playerId}
+//     `;
+//     if (!player) {
+//         throw new Error("Player not found");
+//     }
+
+//     // Update the wages table: set bought to 0 or 1.
+//     const updatedWage = await sql`
+//       UPDATE wages
+//       SET bought = ${bought}, wage_eur = ${wage},timestamp = NOW()
+//       WHERE wage_id = ${player.wage_id}
+//       RETURNING *;
+//     `;
+//     return updatedWage;
+// };
+
+
 // Add a new player
 export const addPlayerHandler = async (req, res) => {
     try {
