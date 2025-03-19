@@ -43,7 +43,7 @@ const Home = () => {
               </div>
               <div className="flex items-center gap-2">
                 <RiWindowsFill />
-                <p>Windows, Mac, Linux</p>
+                <p>Phone, Laptop</p>
               </div>
             </div>
             <h1 className="py-8 text-5xl text-gray-700 font-display font-semibold sm:text-center md:text-5xl lg:text-7xl lg:w-5/6 sm:mx-auto">
@@ -55,7 +55,7 @@ const Home = () => {
 
             <div className="sm:flex gap-12 pt-10 sm:justify-center justify-start">
               <div className="mb-3 sm:mb-0">
-                <Button onClick={() => navigate('/basket')}>Choose Players</Button>
+                <Button onClick={()=>navigate('/basket')}>Choose Players</Button>
               </div>
               <div>
                 <Button variant={"outline"} onClick={() => navigate('/players')} >Player Stats</Button>

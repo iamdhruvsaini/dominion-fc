@@ -44,11 +44,11 @@ import {
   useRemoveSelectedPlayerMutation,
 } from "@/redux/features/user-selection/userSelectionApi";
 import Loading from "@/components/Loading";
-import PositionBottom from "../PositionBottom";
 
 import { useAuth } from "@/context/AuthContext";
 import { Link } from "react-router-dom";
 import { getSocket } from "@/utils/socket";
+import OfferAd from "@/components/OfferAd";
 
 // forwrds[3]='LW','ST','RW'
 // Midfielders[3]='CDM','CAM','CM'
@@ -187,7 +187,7 @@ const Midfielders = () => {
                 className={`flex items-center gap-2 text-sm font-medium px-4 py-2 rounded-md border transition-all
                 ${
                   link.active
-                    ? "bg-gray-100 border-gray-300 shadow-sm"
+                    ? "bg-gray-100 border-gray-300 shadow-sm "
                     : "bg-white border-gray-200 hover:bg-gray-50 hover:border-gray-400"
                 }`}
               >
@@ -516,7 +516,7 @@ const Midfielders = () => {
           </div>
         </div>
       </section>
-      <PositionBottom />
+      <OfferAd/>
     </>
   );
 };
