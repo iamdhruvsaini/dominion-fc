@@ -34,7 +34,7 @@ const Questions = () => {
     <div>
       <p className="text-4xl font-bold text-gray-700">FAQ's</p>
       <div 
-        className="mt-10 mx-auto grid gap-5 lg:grid-cols-2 px-4"
+        className="mt-10 mx-auto grid gap-5 lg:grid-cols-2 px-2"
         style={{ minHeight: 'max-content' }} // Helps prevent layout shifts
       >
         {askedQuestions.map((item, index) => (
