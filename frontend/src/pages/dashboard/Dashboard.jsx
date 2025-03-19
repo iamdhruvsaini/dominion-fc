@@ -14,7 +14,7 @@ const dashboardContent = [
   {
     title: "Squad Optimization",
     description: "Optimize your squad using AI-driven insights to build the best possible team within budget constraints.",
-    link:'squad-optimization'
+    link:'coming-soon'
   },
   {
     title: "Performance Analysis",
@@ -24,7 +24,7 @@ const dashboardContent = [
   {
     title: "Team Prediction",
     description: "Predict the best possible starting XI based on player ratings, positions, and team requirements.",
-    link:'best-playing-11'
+    link:'cart'
   },
 ];
 

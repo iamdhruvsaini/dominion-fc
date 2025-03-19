@@ -4,6 +4,8 @@ import { getMostValuablePlayersHandler, getHighestPaidPlayersHandler, getBestVal
 import { getBestDefenders, getBestForwards, getBestGoalkeepers, getBestMidfielders } from '../../controllers/stats/position-ranking/positionRanking.controller.js';
 import { getBestAllRoundPlayers, getBestAttackingPlayers, getBestDefensivePlayers, getPlayersWithBestFitnessLevel, getPlayersWithHighestSkillMoves } from '../../controllers/stats/players-skills-comparison/playersSkillsComp.controller.js';
 import { fetchSimilarPlayer } from '../../controllers/stats/player-compariosn/playerComparison.controller.js';
+import { getBestDribbersHandler, getBestPassersHandler, getFastestPlayersHandler, getMostPhysicalPlayersHandler } from '../../controllers/stats/skill-based-ranking/skillBasedRanking.js';
+
 
 
 const router = express.Router();
@@ -30,7 +32,7 @@ router.get("/best-defenders", getBestDefenders);
 router.get("/best-goalkeepers", getBestGoalkeepers);
 
 
-//based on players skills 
+//based on specialized
 
 router.get("/players-with-highest-skill-moves", getPlayersWithHighestSkillMoves);
 router.get("/best-players-by-attacking-attributes", getBestAttackingPlayers);
@@ -38,6 +40,13 @@ router.get("/best-players-by-defensive-attributes", getBestDefensivePlayers);
 router.get("/best-all-round-players", getBestAllRoundPlayers);
 router.get("/players-with-best-fitness-level", getPlayersWithBestFitnessLevel);
 
+
+//skill based ranking
+
+router.get("/best-dribblers",getBestDribbersHandler);
+router.get("/best-passers",getBestPassersHandler);
+router.get("/fastest-players",getFastestPlayersHandler);
+router.get("/most-physical-players",getMostPhysicalPlayersHandler);
 
 
 // comparison routes

@@ -58,7 +58,7 @@ const Home = () => {
 
             <div className="sm:flex gap-12 pt-10 sm:justify-center justify-start">
               <div className="mb-3 sm:mb-0">
-                <Button onClick={() => navigate("/basket")}>
+                <Button onClick={() => navigate("/bucket")}>
                   Choose Players
                 </Button>
               </div>

@@ -45,16 +45,6 @@ const categoryGroups = [
     ]
   },
   {
-    title: "League & Club",
-    icon: <Shield className="w-5 h-5" />,
-    categories: [
-      "Best Players in Each League",
-      "Best Players in Each Club",
-      "Leagues with Highly Rated Players",
-      "Clubs with Highest Overall Ratings",
-    ]
-  },
-  {
     title: "Specialized",
     icon: <Star className="w-5 h-5" />,
     categories: [

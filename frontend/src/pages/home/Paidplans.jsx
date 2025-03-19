@@ -9,6 +9,8 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/PayementCard";
+import { useNavigate } from "react-router-dom";
+
 
 const plans = [
   {
@@ -53,6 +55,9 @@ const plans = [
 ];
 
 export default function PaidPlans() {
+
+const navigate=useNavigate();
+
   return (
     <div className="py-12 px-4">
       <div className="text-center mb-12">
@@ -100,6 +105,7 @@ export default function PaidPlans() {
                   plan.popular ? "bg-primary hover:bg-primary/90" : ""
                 )}
                 variant={plan.popular ? "default" : "outline"}
+                onClick={() => navigate('/coming-soon')}
               >
                 {plan.title === "Free" ? "Get Started" : "Subscribe Now"}
               </Button>

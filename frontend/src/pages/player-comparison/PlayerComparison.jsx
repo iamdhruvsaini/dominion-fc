@@ -70,7 +70,7 @@ const PlayerComparison = () => {
                     </span>
                     {player.bought === 1 && (
                       <span className="px-3 py-1 bg-red-500 text-white font-bold rounded-full text-sm">
-                        Transferred
+                        Sold Out
                       </span>
                     )}
                   </div>

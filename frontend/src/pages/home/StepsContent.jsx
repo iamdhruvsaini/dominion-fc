@@ -1,14 +1,15 @@
 import React from "react";
 import stepBox from "../../assets/Images/steps-box.png";
 import { Check, Users, BarChart, ArrowRight, Cpu } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const StepsContent = () => {
   return (
-    <div className="sm:px-10 xl:px-0 mt-12 flex flex-col gap-10">
+    <div className="sm:px-10 xl:px-0 mt-8 flex flex-col gap-10">
       <h2 className="text-5xl font-bold text-gray-800 text-center mb-4">
         How It Works
       </h2>
-      <p className="text-xl text-gray-600 text-center max-w-3xl mx-auto">
+      <p className="text-lg text-gray-500 text-center max-w-3xl mx-auto">
         Our powerful platform helps you build the ultimate football squad
         through data-driven insights and AI optimization
       </p>
@@ -112,13 +113,13 @@ const StepsContent = () => {
               your perfect lineup.
             </p>
             <div className="mt-5 pt-4 border-t border-gray-100">
-              <a
-                href="#"
+              <Link
+                to={'/players'}
                 className="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-gradient-to-r from-blue-600 to-blue-800 rounded-lg hover:from-blue-700 hover:to-blue-900 transition-all duration-300 shadow-sm"
               >
                 Explore Players
                 <ArrowRight className="ms-2" size={16} />
-              </a>
+              </Link>
             </div>
           </div>
 
@@ -136,13 +137,13 @@ const StepsContent = () => {
               strategic formation compatibility.
             </p>
             <div className="mt-5 pt-4 border-t border-gray-100">
-              <a
-                href="#"
+              <Link
+                to={'/bucket'}
                 className="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-gradient-to-r from-purple-600 to-purple-800 rounded-lg hover:from-purple-700 hover:to-purple-900 transition-all duration-300 shadow-sm"
               >
                 Try Optimizer
                 <ArrowRight className="ms-2" size={16} />
-              </a>
+              </Link>
             </div>
           </div>
 
@@ -160,13 +161,13 @@ const StepsContent = () => {
               maximum performance.
             </p>
             <div className="mt-5 pt-4 border-t border-gray-100">
-              <a
-                href="#"
+              <Link
+                to={'/cart'}
                 className="inline-flex items-center px-4 py-2 text-sm font-medium text-center text-white bg-gradient-to-r from-pink-600 to-pink-800 rounded-lg hover:from-pink-700 hover:to-pink-900 transition-all duration-300 shadow-sm"
               >
                 View Insights
                 <ArrowRight className="ms-2" size={16} />
-              </a>
+              </Link>
             </div>
           </div>
         </div>

@@ -159,7 +159,7 @@ export const markPlayerAsSold = async (playerId, bought, wage) => {
     // Update the wages table: set bought to 0 or 1.
     const updatedWage = await sql`
       UPDATE wages
-      SET bought = ${bought}, wage_eur = ${wage},timestamp = NOW()
+      SET bought = ${bought}, value_eur = ${wage},timestamp = NOW()
       WHERE wage_id = ${player.wage_id}
       RETURNING *;
     `;

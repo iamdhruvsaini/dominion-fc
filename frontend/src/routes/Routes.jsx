@@ -32,6 +32,7 @@ import SuperAdminRoute from "./SuperAdminRoute";
 import Playing from "@/pages/football-field/Playing";
 import AddPlayer from "@/admin/admin-dashboard/add-player/AddPlayer";
 import Contact from "@/pages/contact/Contact";
+import UnderDevelopment from "@/components/UnderDevelopment";
 
 
 
@@ -148,6 +149,10 @@ const router = createBrowserRouter([
       {
         path:"contact",
         element:<Contact/>
+      },
+      {
+        path:"coming-soon",
+        element:<UnderDevelopment/>
       }
     ],
   },
