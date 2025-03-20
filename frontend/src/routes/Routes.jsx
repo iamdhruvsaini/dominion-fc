@@ -33,6 +33,7 @@ import Playing from "@/pages/football-field/Playing";
 import AddPlayer from "@/admin/admin-dashboard/add-player/AddPlayer";
 import Contact from "@/pages/contact/Contact";
 import UnderDevelopment from "@/components/UnderDevelopment";
+import PositionPredictionUI from "@/pages/prediciton/PositionPredictionUI";
 
 
 
@@ -141,6 +142,10 @@ const router = createBrowserRouter([
       {
         path: "player-comparison",
         element:<PrivateRoute><PlayerComparison /></PrivateRoute> ,
+      },
+      {
+        path: "position-prediciton",
+        element:<PrivateRoute><PositionPredictionUI /></PrivateRoute> ,
       },
       {
         path:"playing",
