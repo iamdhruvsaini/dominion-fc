@@ -53,44 +53,41 @@
 
 ---
 
-## 📸 **Screenshots**  
-### ➡️ **Home Page**  
-![Home Page](image.png) 
-![alt text](image-1.png)
 
-### ➡️ **Player Selection**  
-![Player Selection](image-2.png)
-![alt text](image-3.png)
-
-### ➡️ **Team Optimization**  
-![alt text](image-4.png)
-![alt text](image-5.png)
-
----
 
 ## 🛠️ **Setup Instructions**  
 ### 1. **Clone the repository**  
 ```bash
-git clone git@github.com:iamdhruvsaini/dominion-fc..git
+git clone git@github.com:iamdhruvsaini/dominion-fc.git 
 cd dominion-fc
 ```
 
 ### 2. **Install dependencies**  
+
+##### Note : For Development change NODE_ENV  = "development" and in frontend VITE_PROD = 'false'
+
+-> For Frontend in frontend directory
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+-> For backend in root directory
+
 ```bash
 npm install
+npm start
 ```
 
-### 3. **Set up environment variables**  
-Create a `.env` file in the root and add the following:  
-
-### 4. **Start the development server**  
+### 3. **Start the development server**  
 ```bash
 npm run dev
 ```
 
 
 ## 🌍 **Live Demo**  
-👉 [**View Live**](https://dominion-fc.onrender.com)  
+👉 [**View Live (It can take upto 50sec for first time opening as render scales down due to inactive)**](https://dominion-fc.onrender.com)  
 
 ---
 
