@@ -30,7 +30,7 @@ export const getRecentSoldPlayer = async (req, res) => {
             p.club_position AS position,
             p.nationality_name AS country,
             p.short_name AS name,
-            w.wage_eur AS wage
+            w.value_eur AS wage
         FROM players p
         LEFT JOIN wages w ON p.wage_id = w.wage_id
         WHERE w.bought = 1
