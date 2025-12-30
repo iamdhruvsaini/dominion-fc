@@ -1,19 +1,19 @@
 
 # ⚽ **Dominion FC**  
-🔮 *Optimize Your Football Squad with Machine Learning & genAI*  
+🔮 *Optimize Your Football Squad with genAI*  
 
 
 
 ---
 
 ## 🚀 **About the Project**  
-**Dominion FC** is a web-based tool designed to help football managers and enthusiasts create the **best possible squad** using advanced **Machine Learning (ML)** and **Optimization Techniques**. The app rates players, predicts their auction cost, and forms the optimal starting XI based on a budget constraint — just like a professional football draft!  
+**Dominion FC** is a web-based tool designed to help football managers and enthusiasts create the **best possible squad** using advanced **Statistical Methods** and **Knapsack Algorithm**. The app rates players, predicts their auction cost, and forms the optimal starting XI based on a budget constraint — just like a professional football draft!  
 
 ---
 
 ## 🌟 **Features**  
 ✅ **Player Position** – Predicts player position to maximize its performance .  
-✅ **Cost Prediction** – Predicts player auction costs using ML models.  
+✅ **Cost Prediction** – Predicts player auction costs using maths models.  
 ✅ **Linear Programming (Knapsack)** – Applies the **Knapsack algorithm** to form the best squad within a set budget.  
 ✅ **Position-Specific Buckets** – Organizes players into categories:  
    - 🥅 Goalkeepers  
