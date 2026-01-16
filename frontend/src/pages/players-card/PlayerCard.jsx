@@ -73,9 +73,10 @@ const PlayerCard = () => {
         <div className="bg-gray-50 flex flex-col lg:flex-row items-center rounded-xl shadow-md overflow-hidden sm:w-1/2 h-auto sm:h-[160px] dark:bg-gray-900 dark:bg-opacity-20">
           <div className="p-3 flex items-center justify-center h-full dark:bg-gray-800">
             <img
-              src={playerDetails.player_face_url}
+              src={playerDetails.player_face_url || "https://ui-avatars.com/api/?name=Player&background=0D8ABC&color=fff&size=120"}
               alt={playerDetails.short_name}
               className="h-[120px] w-[120px] object-cover rounded-lg shadow-md"
+              onError={(e) => { e.target.onerror = null; e.target.src = "https://ui-avatars.com/api/?name=" + encodeURIComponent(playerDetails.short_name || "Player") + "&background=0D8ABC&color=fff&size=120"; }}
             />
           </div>
 

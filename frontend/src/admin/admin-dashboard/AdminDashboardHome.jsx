@@ -194,7 +194,7 @@ const AdminDashboardHome = () => {
                 {soldPlayers?.data?.slice(0, 8).map((player, index) => (
                   <div className="flex items-center gap-4" key={index}>
                     <Avatar className="hidden h-9 w-9 sm:flex">
-                      <AvatarImage src={player.player_face_url} alt="Avatar" />
+                      <AvatarImage src={player.player_face_url || "https://ui-avatars.com/api/?name=" + encodeURIComponent(player.short_name || "Player") + "&background=0D8ABC&color=fff&size=36"} alt="Avatar" onError={(e) => { e.target.onerror = null; e.target.src = "https://ui-avatars.com/api/?name=" + encodeURIComponent(player.short_name || "Player") + "&background=0D8ABC&color=fff&size=36"; }} />
                       <AvatarFallback>{player.short_name}</AvatarFallback>
                     </Avatar>
                     <div className="grid gap-1">

@@ -79,9 +79,10 @@ const PlayerComparison = () => {
                   <div className="relative mx-auto w-32 h-32 mb-4">
                     <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-full"></div>
                     <img
-                      src={player.player_face_url}
+                      src={player.player_face_url || "https://ui-avatars.com/api/?name=Player&background=0D8ABC&color=fff&size=128"}
                       alt={player.short_name}
                       className="w-full h-full object-cover rounded-full border-4 border-white shadow-inner"
+                      onError={(e) => { e.target.onerror = null; e.target.src = "https://ui-avatars.com/api/?name=" + encodeURIComponent(player.short_name || "Player") + "&background=0D8ABC&color=fff&size=128"; }}
                     />
                   </div>
 

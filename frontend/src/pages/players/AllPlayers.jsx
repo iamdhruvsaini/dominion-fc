@@ -294,8 +294,9 @@ const AllPlayers = () => {
                         className="px-4 font-medium text-blue-600 whitespace-nowrap hover:underline flex items-center gap-3 cursor-pointer"
                       >
                         <img
-                          src={player.player_face_url}
+                          src={player.player_face_url || "https://ui-avatars.com/api/?name=Player&background=0D8ABC&color=fff&size=32"}
                           className="size-8 hover:scale-105"
+                          onError={(e) => { e.target.onerror = null; e.target.src = "https://ui-avatars.com/api/?name=" + encodeURIComponent(player.short_name || "Player") + "&background=0D8ABC&color=fff&size=32"; }}
                         />
                         <Link to={`/card/${player.player_id}`}>
                           <p className="pt-3">{player.short_name}</p>

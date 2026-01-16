@@ -160,8 +160,9 @@ const SelectedPlayer = ({ players }) => {
                     <Link to={`/card/${player.player_id}`} className="shrink-0">
                       <img
                         className="h-14 w-14 object-cover rounded-md"
-                        src={player.player_face_url}
+                        src={player.player_face_url || "https://ui-avatars.com/api/?name=Player&background=0D8ABC&color=fff&size=56"}
                         alt={player.short_name}
+                        onError={(e) => { e.target.onerror = null; e.target.src = "https://ui-avatars.com/api/?name=" + encodeURIComponent(player.short_name || "Player") + "&background=0D8ABC&color=fff&size=56"; }}
                       />
                     </Link>
 

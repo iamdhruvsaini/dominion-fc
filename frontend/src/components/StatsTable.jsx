@@ -85,10 +85,11 @@ const StatsTable = () => {
                         src={
                           player.player_face_url
                             ? player.player_face_url
-                            : playerNan
+                            : "https://ui-avatars.com/api/?name=" + encodeURIComponent(player.short_name || "Player") + "&background=0D8ABC&color=fff&size=40"
                         }
                         alt={player.short_name}
                         className="w-8 h-8 sm:w-10 sm:h-10 rounded-full object-cover mr-2 sm:mr-3 border-2 border-gray-200 flex-shrink-0"
+                        onError={(e) => { e.target.onerror = null; e.target.src = "https://ui-avatars.com/api/?name=" + encodeURIComponent(player.short_name || "Player") + "&background=0D8ABC&color=fff&size=40"; }}
                       />
                       <Link
                         to={`/card/${player.player_id}`}

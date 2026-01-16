@@ -47,8 +47,9 @@ const Trending = () => {
                 <Link className="overflow-hidden rounded">
                   <img
                     className="mx-auto h-30 w-30 dark:hidden"
-                    src={player.player_face_url}
+                    src={player.player_face_url || "https://ui-avatars.com/api/?name=Player&background=0D8ABC&color=fff&size=120"}
                     alt="player image"
+                    onError={(e) => { e.target.onerror = null; e.target.src = "https://ui-avatars.com/api/?name=" + encodeURIComponent(player.short_name || "Player") + "&background=0D8ABC&color=fff&size=120"; }}
                   />
                 </Link>
                 <div>

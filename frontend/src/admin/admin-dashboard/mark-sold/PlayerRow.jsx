@@ -41,9 +41,10 @@ const PlayerRow = ({ player, markSoldPlayer }) => {
         className="px-4 py-3 font-medium text-blue-600 whitespace-nowrap hover:underline flex items-center gap-2 cursor-pointer"
       >
         <img
-          src={player.player_face_url}
+          src={player.player_face_url || "https://ui-avatars.com/api/?name=Player&background=0D8ABC&color=fff&size=32"}
           alt={player.short_name}
           className="w-8 h-8 rounded-full"
+          onError={(e) => { e.target.onerror = null; e.target.src = "https://ui-avatars.com/api/?name=" + encodeURIComponent(player.short_name || "Player") + "&background=0D8ABC&color=fff&size=32"; }}
         />
         <span>{player.short_name}</span>
       </th>
