@@ -64,7 +64,7 @@ const TeamRender = ({ team, index }) => {
             <div class="flex items-center">
               <!-- Player image -->
               <div class="mr-4 rounded-lg overflow-hidden" style="height: 80px; width: 80px;">
-                <img src="${playerData.image}" alt="${playerData.name}" class="h-full w-full object-cover" />
+                <img src="${playerData.image || `https://ui-avatars.com/api/?name=${encodeURIComponent(playerData.name || 'Player')}&background=0D8ABC&color=fff&size=80`}" alt="${playerData.name}" class="h-full w-full object-cover" onerror="this.onerror=null;this.src='https://ui-avatars.com/api/?name=${encodeURIComponent(playerData.name || 'Player')}&background=0D8ABC&color=fff&size=80';" />
               </div>
               
               <!-- Player info with clean typography -->
@@ -291,9 +291,10 @@ const TeamRender = ({ team, index }) => {
                   {/* Player circular frame with fancy border */}
                   <div className="relative w-20 h-20 md:w-24 md:h-24 rounded-full overflow-hidden border-2 border-white shadow-lg bg-white">
                     <img
-                      src={goalkeeper.image}
+                      src={goalkeeper.image || `https://ui-avatars.com/api/?name=${encodeURIComponent(goalkeeper.name || 'Player')}&background=0D8ABC&color=fff&size=96`}
                       alt={goalkeeper.name}
                       className="w-full h-full object-cover object-center"
+                      onError={(e) => { e.target.onerror = null; e.target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(goalkeeper.name || 'Player')}&background=0D8ABC&color=fff&size=96`; }}
                     />
                   </div>
 
@@ -323,9 +324,10 @@ const TeamRender = ({ team, index }) => {
                 {/* Player circular frame */}
                 <div className="relative w-20 h-20 md:w-24 md:h-24 rounded-full overflow-hidden border-2 border-white shadow-lg bg-white">
                   <img
-                    src={defender.image}
+                    src={defender.image || `https://ui-avatars.com/api/?name=${encodeURIComponent(defender.name || 'Player')}&background=0D8ABC&color=fff&size=96`}
                     alt={defender.name}
                     className="w-full h-full object-cover object-center"
+                    onError={(e) => { e.target.onerror = null; e.target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(defender.name || 'Player')}&background=0D8ABC&color=fff&size=96`; }}
                   />
                 </div>
 
@@ -355,9 +357,10 @@ const TeamRender = ({ team, index }) => {
                   {/* Player circular frame */}
                   <div className="relative w-20 h-20 md:w-24 md:h-24 rounded-full overflow-hidden border-2 border-white shadow-lg bg-white">
                     <img
-                      src={midfielder.image}
+                      src={midfielder.image || `https://ui-avatars.com/api/?name=${encodeURIComponent(midfielder.name || 'Player')}&background=0D8ABC&color=fff&size=96`}
                       alt={midfielder.name}
                       className="w-full h-full object-cover object-center"
+                      onError={(e) => { e.target.onerror = null; e.target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(midfielder.name || 'Player')}&background=0D8ABC&color=fff&size=96`; }}
                     />
                   </div>
 
@@ -387,9 +390,10 @@ const TeamRender = ({ team, index }) => {
                 {/* Player circular frame */}
                 <div className="relative w-20 h-20 md:w-24 md:h-24 rounded-full overflow-hidden border-2 border-white shadow-lg bg-white">
                   <img
-                    src={forward.image}
+                    src={forward.image || `https://ui-avatars.com/api/?name=${encodeURIComponent(forward.name || 'Player')}&background=0D8ABC&color=fff&size=96`}
                     alt={forward.name}
                     className="w-full h-full object-cover object-center"
+                    onError={(e) => { e.target.onerror = null; e.target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(forward.name || 'Player')}&background=0D8ABC&color=fff&size=96`; }}
                   />
                 </div>
 
@@ -473,9 +477,10 @@ const TeamRender = ({ team, index }) => {
                 >
                   <div className="relative w-16 h-16 rounded-full overflow-hidden border-2 border-white shadow-md">
                     <img
-                      src={player.image}
+                      src={player.image || `https://ui-avatars.com/api/?name=${encodeURIComponent(player.name || 'Player')}&background=0D8ABC&color=fff&size=64`}
                       alt={player.name}
                       className="w-full h-full object-cover object-center"
+                      onError={(e) => { e.target.onerror = null; e.target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(player.name || 'Player')}&background=0D8ABC&color=fff&size=64`; }}
                     />
                     <div
                       className="absolute -bottom-0.5 -right-0.5 w-6 h-6 rounded-full flex items-center justify-center text-white text-xs font-bold border border-white shadow-sm"
@@ -528,9 +533,10 @@ const TeamRender = ({ team, index }) => {
               >
                 <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-gray-200 flex-shrink-0">
                   <img
-                    src={player.image}
+                    src={player.image || `https://ui-avatars.com/api/?name=${encodeURIComponent(player.name || 'Player')}&background=0D8ABC&color=fff&size=48`}
                     alt={player.name}
                     className="w-full h-full object-cover"
+                    onError={(e) => { e.target.onerror = null; e.target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(player.name || 'Player')}&background=0D8ABC&color=fff&size=48`; }}
                   />
                 </div>
                 <div className="ml-3 overflow-hidden">
